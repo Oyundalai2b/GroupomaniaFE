@@ -9,6 +9,25 @@ import SignUp from "../views/SignUp.vue";
 
 Vue.use(VueRouter);
 
+const ifNotAuthenticated = (to, from, next) => {
+  if (
+    localStorage.getItem("token") == "" ||
+    localStorage.getItem("token") == null
+  ) {
+    next();
+    return;
+  }
+  next("/");
+};
+
+const ifAuthenticated = (to, from, next) => {
+  if (localStorage.getItem("token") != "") {
+    next();
+    return;
+  }
+  next("/login");
+};
+
 const routes = [
   {
     path: "/",
@@ -19,26 +38,31 @@ const routes = [
     path: "/posts",
     name: "PostList",
     component: PostList,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: "/posts/create",
     name: "PostCreate",
     component: PostCreate,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: "/posts/:id",
     name: "Post",
     component: Post,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: "/login",
     name: "Login",
     component: Login,
+    beforeEnter: ifNotAuthenticated,
   },
   {
     path: "/signup",
     name: "SignUp",
     component: SignUp,
+    beforeEnter: ifNotAuthenticated,
   },
   // {
   //   path: "/about",
