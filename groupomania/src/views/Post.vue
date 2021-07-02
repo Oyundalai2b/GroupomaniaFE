@@ -4,7 +4,9 @@
       <img id="post-img" v-bind:src="post.imgURL" />
       <div class="post-context">
         <h4>{{ post.title }}</h4>
-        <p>{{ post }}</p>
+        <!-- <p>{{ post }}</p> -->
+        <p>{{ post.content }}</p>
+        <p>Created at: {{ post.createdAt }}</p>
       </div>
     </div>
   </div>
@@ -18,6 +20,7 @@ export default {
       post: null,
     };
   },
+
   mounted() {
     let postId = this.$router.currentRoute.params.id;
     const bearer = "Bearer " + localStorage.getItem("token");

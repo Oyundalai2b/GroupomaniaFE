@@ -7,12 +7,12 @@
           <h4>{{ post.title }}</h4>
           <p>{{ post }}</p>
           <router-link :to="{ name: 'Post', params: { id: post.id } }"
-            >View post |
+            >View post
           </router-link>
           <router-link
             :to="{ name: 'PostUpdate', params: { id: post.id } }"
             v-if="canUpdate(post.userId)"
-            >Edit post |
+            >| Edit post |
           </router-link>
           <router-link
             :to="{ name: 'PostDelete', params: { id: post.id } }"
@@ -21,6 +21,16 @@
           </router-link>
         </div>
       </div>
+    </div>
+
+    <div class="mt-3 align-center">
+      <b-pagination
+        v-model="currentPage"
+        :total-rows="rows"
+        :per-page="perPage"
+        align="center"
+        first-number
+      ></b-pagination>
     </div>
   </div>
 </template>
@@ -32,6 +42,10 @@ export default {
   data() {
     return {
       posts: [],
+      displayPosts: [],
+      rows: 100,
+      perPage: 5,
+      currentPage: 1,
     };
   },
   mounted() {

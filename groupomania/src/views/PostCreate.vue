@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="new-post">
     <b-form @submit="onSubmit">
       <b-form-input
         v-model="title"
@@ -93,3 +93,23 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+#new-post {
+  width: 60%;
+  margin: 0 auto;
+  form {
+    #textarea {
+      margin-top: 20px;
+    }
+    div.custom-file {
+      margin: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+</style>

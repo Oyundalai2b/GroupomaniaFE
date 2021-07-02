@@ -25,16 +25,17 @@ export default {
   color: #2c3e50;
   .content {
     width: 100%;
-    height: auto;
+    // height: 500px;
   }
 }
 
 #nav {
+  margin-bottom: 50px;
   padding: 30px;
 
   a {
     font-weight: bold;
-    color: #2c3e50;
+    color: #ffffff;
 
     &.router-link-exact-active {
       color: #42b983;
