@@ -6,6 +6,7 @@
       <router-link to="/login">Login</router-link> |
       <router-link to="/posts">Post List</router-link> |
       <router-link to="/posts/create">Create new post</router-link>
+      <router-link to="/signout">Sign Out</router-link>
     </div>
   </div>
 </template>

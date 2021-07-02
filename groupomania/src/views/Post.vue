@@ -1,26 +1,43 @@
 <template>
-  <div>
-    <b-card
-      title="Card Title"
-      img-src="https://picsum.photos/600/300/?image=25"
-      img-alt="Image"
-      img-top
-      tag="article"
-      style="max-width: 20rem"
-      class="mb-2"
-    >
-      <b-card-text>
-        Some quick example text to build on the card title and make up the bulk
-        of the card's content.
-      </b-card-text>
-
-      <b-button href="#" variant="primary">Go somewhere</b-button>
-    </b-card>
+  <div class="post">
+    <div class="single-post" v-if="post">
+      <img id="post-img" v-bind:src="post.imgURL" />
+      <div class="post-context">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post }}</p>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "Post",
+  data() {
+    return {
+      post: null,
+    };
+  },
+  mounted() {
+    let postId = this.$router.currentRoute.params.id;
+    const bearer = "Bearer " + localStorage.getItem("token");
+    fetch(`http://localhost:3000/api/posts/${postId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: bearer,
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.post = data;
+      })
+      .catch((err) => {
+        console.log("Error occured!");
+        console.log(err);
+      });
+  },
 };
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="post-update">
     <b-form @submit="onSubmit">
       <b-form-input
         v-model="title"
@@ -14,7 +14,10 @@
         max-rows="6"
       >
       </b-form-textarea>
-
+      <div>
+        <p>Current Image</p>
+        <img v-bind:src="currentImage" alt="" />
+      </div>
       <b-form-file
         v-model="file1"
         :state="Boolean(file1)"
@@ -23,19 +26,21 @@
       ></b-form-file>
 
       <!-- Plain mode -->
-      <b-button class="mr-2" type="submit" variant="primary">Post</b-button>
+      <b-button class="mr-2" type="submit" variant="primary">Update</b-button>
     </b-form>
   </div>
 </template>
 
 <script>
+import router from "../router";
 export default {
-  name: "PostCreate",
+  name: "PostUpdate",
   data() {
     return {
       title: "",
       content: "",
       file1: null,
+      currentImage: null,
     };
   },
   methods: {
@@ -43,6 +48,7 @@ export default {
       event.preventDefault();
 
       const bearer = "Bearer " + localStorage.getItem("token");
+      let postId = this.$router.currentRoute.params.id;
 
       if (this.file1) {
         let data = new FormData();
@@ -52,8 +58,8 @@ export default {
         );
         data.append("image", this.file1);
 
-        fetch(`http://localhost:3000/api/posts`, {
-          method: "POST",
+        fetch(`http://localhost:3000/api/posts/${postId}`, {
+          method: "PUT",
           body: data,
           headers: {
             Authorization: bearer,
@@ -69,8 +75,8 @@ export default {
             console.log(err);
           });
       } else {
-        fetch(`http://localhost:3000/api/posts/`, {
-          method: "POST",
+        fetch(`http://localhost:3000/api/posts/${postId}`, {
+          method: "PUT",
           body: JSON.stringify({
             post: { title: this.title, content: this.content },
           }),
@@ -91,5 +97,39 @@ export default {
       }
     },
   },
+  mounted() {
+    let postId = this.$router.currentRoute.params.id;
+    const bearer = "Bearer " + localStorage.getItem("token");
+    fetch(`http://localhost:3000/api/posts/${postId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: bearer,
+      },
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        this.title = data.title;
+        this.content = data.content;
+        this.currentImage = data.imgURL;
+
+        if (data.userId !== parseInt(localStorage.getItem("userId"))) {
+          router.push({ name: "PostList" });
+        }
+      })
+      .catch((err) => {
+        console.log("Error occured!");
+        console.log(err);
+      });
+  },
 };
 </script>
+
+<style lang="scss">
+img {
+  width: 300px;
+  height: auto;
+}
+</style>

@@ -23,6 +23,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  .content {
+    width: 100%;
+    height: auto;
+  }
 }
 
 #nav {

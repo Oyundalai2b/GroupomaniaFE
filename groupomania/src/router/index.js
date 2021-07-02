@@ -5,15 +5,15 @@ import Login from "../views/Login.vue";
 import Post from "../views/Post.vue";
 import PostList from "../views/PostList.vue";
 import PostCreate from "../views/PostCreate.vue";
+import PostUpdate from "../views/PostUpdate.vue";
+import PostDelete from "../views/PostDelete.vue";
 import SignUp from "../views/SignUp.vue";
+import SignOut from "../views/SignOut.vue";
 
 Vue.use(VueRouter);
 
 const ifNotAuthenticated = (to, from, next) => {
-  if (
-    localStorage.getItem("token") == "" ||
-    localStorage.getItem("token") == null
-  ) {
+  if (localStorage.getItem("token") == null) {
     next();
     return;
   }
@@ -21,7 +21,7 @@ const ifNotAuthenticated = (to, from, next) => {
 };
 
 const ifAuthenticated = (to, from, next) => {
-  if (localStorage.getItem("token") != "") {
+  if (localStorage.getItem("token") != null) {
     next();
     return;
   }
@@ -53,6 +53,18 @@ const routes = [
     beforeEnter: ifAuthenticated,
   },
   {
+    path: "/posts/:id/update",
+    name: "PostUpdate",
+    component: PostUpdate,
+    beforeEnter: ifAuthenticated,
+  },
+  {
+    path: "/posts/:id/delete",
+    name: "PostDelete",
+    component: PostDelete,
+    beforeEnter: ifAuthenticated,
+  },
+  {
     path: "/login",
     name: "Login",
     component: Login,
@@ -63,6 +75,12 @@ const routes = [
     name: "SignUp",
     component: SignUp,
     beforeEnter: ifNotAuthenticated,
+  },
+  {
+    path: "/signout",
+    name: "SignOut",
+    component: SignOut,
+    beforeEnter: ifAuthenticated,
   },
   // {
   //   path: "/about",
