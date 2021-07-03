@@ -1,5 +1,5 @@
 <template>
-  <div class="post-delete">
+  <div id="post-delete">
     <b-form @submit="onSubmit">
       <b-form-input
         v-model="title"
@@ -26,7 +26,7 @@
       ></b-form-file>
 
       <!-- Plain mode -->
-      <b-button class="mr-2" type="submit" variant="primary">Delete</b-button>
+      <b-button class="mr-2" type="submit" variant="danger">Delete</b-button>
     </b-form>
   </div>
 </template>
@@ -100,8 +100,27 @@ export default {
 </script>
 
 <style lang="scss">
+#post-delete {
+  height: auto;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  form {
+    #textarea {
+      margin-top: 20px;
+    }
+    div.custom-file {
+      margin: 10px;
+    }
+    button {
+      margin-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
 img {
-  width: 300px;
+  width: 500px;
   height: auto;
 }
 </style>

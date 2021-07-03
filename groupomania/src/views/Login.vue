@@ -1,7 +1,7 @@
 <template>
-  <div id="Home">
+  <div id="login">
     <b-container>
-      <b-row class="justify-content-md-center mt-4">
+      <b-row class="justify-content-md-center mt-4 mb-4">
         <b-col col md="8">
           <b-card
             header="WELCOME BACK"
@@ -28,7 +28,7 @@
                 <b-form-group class="mt-2">
                   <b-button
                     type="submit"
-                    variant="outline-primary"
+                    variant="primary"
                     :enabled="acceptableSubmittion"
                   >
                     Login
@@ -96,3 +96,15 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+#login {
+  .row {
+    .col {
+      width: 400px;
+      margin: 20 auto;
+      padding: 10px;
+    }
+  }
+}
+</style>

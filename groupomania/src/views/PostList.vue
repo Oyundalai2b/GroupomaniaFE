@@ -17,6 +17,7 @@
           <router-link
             :to="{ name: 'PostDelete', params: { id: post.id } }"
             v-if="canUpdate(post.userId)"
+            id="delete-post"
             >Delete post
           </router-link>
         </div>
@@ -87,24 +88,33 @@ export default {
     margin: 20px auto;
     .singlePost {
       display: flex;
-      border: solid #42b983;
+      border: solid #6c757d;
       border-radius: 10px;
       margin: 20px 0;
       padding: 5px;
       img {
         width: 200px;
         border-radius: 10px;
+        object-fit: cover;
       }
       .postContext {
         border-radius: 10px;
-
+        word-break: break-all;
+        padding: 0 20px;
         h4 {
           text-transform: uppercase;
+          color: #0d6efd;
         }
         p {
-          padding: 0 10px;
           width: auto;
-          word-break: break-all;
+          // word-break: break-all;
+        }
+        a {
+          font-size: large;
+          text-decoration: none;
+        }
+        a#delete-post {
+          color: #dc3545;
         }
       }
     }

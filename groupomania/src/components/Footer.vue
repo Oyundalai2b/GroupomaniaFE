@@ -18,10 +18,9 @@ export default {
 .footer {
   position: relative;
   width: 100%;
-  height: 300px;
-  margin-top: 50px;
-  background-color: #0f1b34;
-  color: white;
+  height: 200px;
+  background-color: #d9d9ea;
+  color: #0e0302;
   .contacts {
     position: absolute;
     top: 0;

@@ -18,7 +18,7 @@
       <b-form-file
         v-model="file1"
         :state="Boolean(file1)"
-        placeholder="Choose a file or drop it here..."
+        placeholder=""
         drop-placeholder="Drop file here..."
       ></b-form-file>
 
@@ -96,8 +96,10 @@ export default {
 
 <style lang="scss">
 #new-post {
+  height: auto;
   width: 60%;
   margin: 0 auto;
+  padding: 20px;
   form {
     #textarea {
       margin-top: 20px;

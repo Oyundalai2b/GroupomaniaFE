@@ -17,12 +17,7 @@ export default {
 
 <style lang="scss">
 #nav {
-  position: relative;
-
-  width: 100%;
-  height: 100px;
-  background-color: #0f1b34;
-  color: white;
+  width: 50%;
   a {
     margin: 0 10px;
   }

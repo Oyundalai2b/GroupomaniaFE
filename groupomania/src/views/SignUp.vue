@@ -1,7 +1,7 @@
 <template>
   <div id="signup">
     <b-container>
-      <b-row class="justify-content-md-center mt-4">
+      <b-row class="justify-content-md-center mt-4 mb-4">
         <b-col col md="8">
           <b-card
             header="WELCOME TO GROUPOMANIA"
@@ -39,10 +39,10 @@
                 ></b-form-input>
               </b-form-group>
 
-              <b-button class="mr-2" type="submit" variant="primary"
+              <b-button class="signup mt-2" type="submit" variant="primary"
                 >Sign Up</b-button
               >
-              <b-button class="m-2" type="reset" variant="danger"
+              <b-button class="mt-2" type="reset" variant="danger"
                 >Reset</b-button
               >
             </b-form>
@@ -100,4 +100,20 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+#signup {
+  .row {
+    .col {
+      width: 400px;
+      margin: 0 auto;
+      margin-bottom: 20px !important;
+      div.card-body {
+        line-height: 40px;
+      }
+    }
+  }
+}
+button.signup {
+  margin-right: 20px;
+}
+</style>
