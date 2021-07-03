@@ -1,6 +1,8 @@
 <template>
   <div id="header">
-    <img :src="image" alt="" />
+    <div class="imageLogo">
+      <img :src="image" alt="" />
+    </div>
     <navbar></navbar>
   </div>
 </template>
@@ -30,13 +32,16 @@ export default {
   height: 100px;
   background-color: #d9d9ea;
   color: #0e0302;
-  img {
-    position: absolute;
-    left: 0;
-    height: 100px;
-    width: auto;
+  .imageLogo {
+    width: 40%;
+    img {
+      position: absolute;
+      left: 0;
+      height: 100px;
+      width: auto;
+    }
   }
-  #nav {
+  div#nav {
     position: absolute;
     right: 0;
   }

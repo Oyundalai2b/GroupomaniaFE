@@ -5,7 +5,6 @@
         v-model="title"
         placeholder="Enter post title"
       ></b-form-input>
-
       <b-form-textarea
         id="textarea"
         v-model="content"
@@ -128,8 +127,24 @@ export default {
 </script>
 
 <style lang="scss">
-img {
-  width: 300px;
+.post-update {
   height: auto;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  form {
+    #textarea {
+      margin-top: 20px;
+    }
+    img {
+      width: 300px;
+      height: auto;
+    }
+    button {
+      margin-top: 20px;
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
 }
 </style>

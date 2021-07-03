@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
+import Profile from "../views/Profile.vue";
 import Post from "../views/Post.vue";
 import PostList from "../views/PostList.vue";
 import PostCreate from "../views/PostCreate.vue";
@@ -69,6 +70,12 @@ const routes = [
     name: "Login",
     component: Login,
     beforeEnter: ifNotAuthenticated,
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    component: Profile,
+    beforeEnter: ifAuthenticated,
   },
   {
     path: "/signup",
