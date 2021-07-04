@@ -22,7 +22,11 @@
                   description="Enter your password"
                   label="Password"
                 >
-                  <b-form-input v-model="form.password" required>
+                  <b-form-input
+                    v-model="form.password"
+                    required
+                    type="password"
+                  >
                   </b-form-input>
                 </b-form-group>
                 <b-form-group class="mt-2">

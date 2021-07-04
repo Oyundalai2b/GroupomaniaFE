@@ -35,6 +35,7 @@
                   id="input-2"
                   v-model="form.password"
                   placeholder="Enter Password"
+                  type="password"
                   required
                 ></b-form-input>
               </b-form-group>
