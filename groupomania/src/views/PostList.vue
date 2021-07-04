@@ -1,7 +1,12 @@
 <template>
   <div class="postList">
     <div class="posts">
-      <div class="singlePost" :key="index" v-for="(post, index) in posts">
+      <div
+        class="singlePost"
+        v-bind:class="classObject(post)"
+        :key="index"
+        v-for="(post, index) in displayPosts"
+      >
         <img id="post-img" v-bind:src="post.imgURL" />
         <div class="postContext">
           <h4>{{ post.title }}</h4>
@@ -30,7 +35,7 @@
         :total-rows="rows"
         :per-page="perPage"
         align="center"
-        first-number
+        @input="paginate(currentPage)"
       ></b-pagination>
     </div>
   </div>
@@ -44,8 +49,8 @@ export default {
     return {
       posts: [],
       displayPosts: [],
-      rows: 100,
-      perPage: 5,
+      rows: 0,
+      perPage: 3,
       currentPage: 1,
     };
   },
@@ -63,6 +68,8 @@ export default {
       })
       .then((data) => {
         this.posts = data;
+        this.displayPosts = data.slice(0, this.perPage);
+        this.rows = this.posts.length;
       })
       .catch((err) => {
         console.log("Error occured!");
@@ -76,6 +83,16 @@ export default {
       } else {
         return false;
       }
+    },
+    paginate(currentPage) {
+      const start = (currentPage - 1) * this.perPage;
+      this.displayPosts = this.posts.slice(start, start + this.perPage);
+    },
+
+    classObject: function (currentPost) {
+      return {
+        unread: !currentPost.isRead,
+      };
     },
   },
 };
