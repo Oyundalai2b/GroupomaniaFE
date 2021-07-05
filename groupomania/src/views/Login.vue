@@ -43,6 +43,13 @@
           </b-card>
         </b-col>
       </b-row>
+      <b-row class="justify-content-md-center mt-4 mb-4">
+        <b-col col md="8">
+          <b-alert :show="error" variant="danger">
+            {{ errorMessage }}
+          </b-alert>
+        </b-col>
+      </b-row>
     </b-container>
     <router-view />
   </div>
@@ -58,6 +65,8 @@ export default {
         email: "",
         password: "",
       },
+      error: false,
+      errorMessage: "",
     };
   },
   methods: {
@@ -85,7 +94,9 @@ export default {
           console.log(data);
         })
         .catch((err) => {
-          alert("Email or password incorrect");
+          this.error = true;
+          this.errorMessage = "Email or password incorrect!";
+          // alert("Email or password incorrect");
           console.log("Try again please");
           console.log(err);
         });

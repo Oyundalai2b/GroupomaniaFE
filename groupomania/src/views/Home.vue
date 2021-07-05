@@ -1,7 +1,7 @@
 <template>
-  <div class="home">
-    <div class="main">
-      <div class="company-text">
+  <div class="container home">
+    <div class="row main">
+      <div class="col company-text">
         <h1>Bring your workforce from disjointed to connected</h1>
         <p>
           An 8-hour workday can feel like forever when you feel disconnected
@@ -12,7 +12,7 @@
         </p>
       </div>
     </div>
-    <div class="pic">
+    <div class="row pic">
       <img :src="image" alt="technology image" />
     </div>
   </div>

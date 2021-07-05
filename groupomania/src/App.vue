@@ -28,18 +28,4 @@ export default {
     // height: 500px;
   }
 }
-
-#nav {
-  margin-bottom: 50px;
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #0e0302;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
 </style>

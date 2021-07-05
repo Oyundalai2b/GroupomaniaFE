@@ -1,30 +1,38 @@
 <template>
   <div class="postList">
-    <div class="posts">
+    <div class="container posts">
       <div
-        class="singlePost"
+        class="row singlePost"
         v-bind:class="classObject(post)"
         :key="index"
         v-for="(post, index) in displayPosts"
       >
-        <img id="post-img" v-bind:src="post.imgURL" />
-        <div class="postContext">
+        <img id="post-img" class="col-md-4" v-bind:src="post.imgURL" />
+
+        <div class="col-md-8 postContext">
           <h4>{{ post.title }}</h4>
-          <p>{{ post }}</p>
-          <router-link :to="{ name: 'Post', params: { id: post.id } }"
-            >View post
-          </router-link>
-          <router-link
-            :to="{ name: 'PostUpdate', params: { id: post.id } }"
-            v-if="canUpdate(post.userId)"
-            >| Edit post |
-          </router-link>
-          <router-link
-            :to="{ name: 'PostDelete', params: { id: post.id } }"
-            v-if="canUpdate(post.userId)"
-            id="delete-post"
-            >Delete post
-          </router-link>
+          <p>{{ post.content }}</p>
+          <div class="footer-of-post">
+            <div>
+              Posted by:<strong> {{ post.user.name }}</strong>
+            </div>
+            <div class="links">
+              <router-link :to="{ name: 'Post', params: { id: post.id } }"
+                >View post
+              </router-link>
+              <router-link
+                :to="{ name: 'PostUpdate', params: { id: post.id } }"
+                v-if="canUpdate(post.userId)"
+                >| Edit post |
+              </router-link>
+              <router-link
+                :to="{ name: 'PostDelete', params: { id: post.id } }"
+                v-if="canUpdate(post.userId)"
+                id="delete-post"
+                >Delete post
+              </router-link>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -52,6 +60,9 @@ export default {
       rows: 0,
       perPage: 3,
       currentPage: 1,
+      dismissSecs: 5,
+      dismissCountDown: 0,
+      showDismissibleAlert: false,
     };
   },
   mounted() {
@@ -70,6 +81,7 @@ export default {
         this.posts = data;
         this.displayPosts = data.slice(0, this.perPage);
         this.rows = this.posts.length;
+        console.log(data[0].user);
       })
       .catch((err) => {
         console.log("Error occured!");
@@ -99,42 +111,79 @@ export default {
 </script>
 
 <style lang="scss">
-.postList {
-  .posts {
-    width: 60%;
-    margin: 20px auto;
-    .singlePost {
-      display: flex;
-      border: solid #6c757d;
-      border-radius: 10px;
-      margin: 20px 0;
-      padding: 5px;
-      img {
-        width: 200px;
-        border-radius: 10px;
-        object-fit: cover;
-      }
-      .postContext {
-        border-radius: 10px;
-        word-break: break-all;
-        padding: 0 20px;
-        h4 {
-          text-transform: uppercase;
-          color: #0d6efd;
-        }
-        p {
-          width: auto;
-          // word-break: break-all;
-        }
-        a {
-          font-size: large;
-          text-decoration: none;
-        }
-        a#delete-post {
-          color: #dc3545;
-        }
-      }
-    }
-  }
+.toast-module-opacity {
+  opacity: 1 !important;
 }
+// .postList {
+//   .posts {
+//     width: 60%;
+//     margin: 20px auto;
+
+//     .singlePost {
+//       display: flex;
+//       border-radius: 10px;
+//       padding: 20px 5px;
+
+//       img {
+//         margin-right: 20px;
+//         width: 200px;
+//         height: 200px;
+//         object-fit: cover;
+//       }
+//       .postContext {
+//         position: relative;
+//         width: 100%;
+//         background-color: #ececec;
+//         text-align: center;
+
+//         h4 {
+//           text-transform: uppercase;
+//           font-weight: 400;
+//           border-bottom: solid #f8f9fa;
+//         }
+//         p {
+//           width: 100%;
+//           text-overflow: ellipsis;
+//           white-space: wrap;
+//           overflow: hidden;
+//         }
+//         .footer-of-post {
+//           border-top: solid #f8f9fa;
+//           width: 100%;
+//           position: absolute;
+//           display: flex;
+//           justify-content: space-between;
+//           bottom: 5px;
+
+//           div {
+//             color: #2c3e50;
+//             margin-left: 5px;
+//           }
+//           .links {
+//             margin-right: 5px;
+//             a {
+//               font-size: large;
+//               text-decoration: none;
+//             }
+//             a#delete-post {
+//               color: #dc3545;
+//             }
+//           }
+//         }
+//       }
+//     }
+//     .unread {
+//       .postContext {
+//         h4 {
+//           color: #0d6efd;
+//         }
+//       }
+//     }
+//   }
+// }
+// #myListView.k-widget,
+// #catalog-items.k-widget * {
+//   -webkit-box-sizing: border-box;
+//   box-sizing: border-box;
+// }
 </style>

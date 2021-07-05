@@ -1,8 +1,8 @@
 <template>
   <div id="header">
-    <div class="imageLogo">
+    <!-- <div class="imageLogo">
       <img :src="image" alt="" />
-    </div>
+    </div> -->
     <navbar></navbar>
   </div>
 </template>
@@ -26,24 +26,20 @@ export default {
 </script>
 
 <style lang="scss">
-#header {
-  position: relative;
-  width: 100%;
-  height: 100px;
-  background-color: #d9d9ea;
-  color: #0e0302;
-  .imageLogo {
-    width: 40%;
-    img {
-      position: absolute;
-      left: 0;
-      height: 100px;
-      width: auto;
-    }
-  }
-  div#nav {
-    position: absolute;
-    right: 0;
-  }
-}
+// #header {
+//   position: relative;
+//   width: 100%;
+//   height: 100px;
+//   background-color: #d9d9ea;
+//   color: #0e0302;
+//   .imageLogo {
+//     width: 40%;
+//     img {
+//       position: absolute;
+//       left: 0;
+//       height: 100px;
+//       width: auto;
+//     }
+//   }
+// }
 </style>

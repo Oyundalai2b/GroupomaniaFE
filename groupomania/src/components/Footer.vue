@@ -1,8 +1,8 @@
 <template>
   <div class="footer">
     <div class="contacts">
-      <i class="bi bi-facebook"> facebook | </i>
-      <i class="bi bi-instagram"> instagram | </i>
+      <b-icon icon="facebook" font-scale="1.5"></b-icon> |
+      <b-icon icon="instagram" font-scale="1.5"></b-icon>
       <br />
       <span>&copy; 2021 CONNECT-E</span>
     </div>

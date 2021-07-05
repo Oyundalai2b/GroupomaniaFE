@@ -77,6 +77,16 @@ export default {
       })
         .then((res) => {
           if (res.status == 201) {
+            this.$bvToast.toast(
+              `Your profile has been created successfully. Please click here to login`,
+              {
+                title: "Profile created",
+                // autoHideDelay: 5000,
+                appendToast: false,
+                variant: "success",
+                solid: true,
+              }
+            );
             console.log("User added successfully!");
           }
         })

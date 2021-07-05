@@ -237,13 +237,6 @@ export default {
         this.show = true;
       });
     },
-    makeToast(variant = null) {
-      this.$bvToast.toast("Toast body content", {
-        title: `Variant ${variant || "default"}`,
-        variant: variant,
-        solid: true,
-      });
-    },
   },
 };
 </script>
