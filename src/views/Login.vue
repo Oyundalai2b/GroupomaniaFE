@@ -56,6 +56,8 @@
 </template>
 
 <script>
+import dotenv from "dotenv";
+dotenv.config();
 import router from "../router";
 export default {
   name: "Login",
@@ -72,7 +74,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      fetch("http://localhost:3000/api/users/login", {
+      fetch(`${process.env.VUE_APP_API_URL}/api/users/login`, {
         method: "POST",
         body: JSON.stringify(this.form),
         headers: {

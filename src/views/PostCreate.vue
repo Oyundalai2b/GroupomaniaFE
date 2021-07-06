@@ -54,7 +54,7 @@ export default {
         );
         data.append("image", this.file1);
 
-        fetch(`http://localhost:3000/api/posts`, {
+        fetch(`${process.env.VUE_APP_API_URL}/api/posts`, {
           method: "POST",
           body: data,
           headers: {
@@ -64,6 +64,14 @@ export default {
           .then((res) => {
             if (res.status == 201) {
               console.log("User added successfully!");
+
+              this.$bvToast.toast(`Your post has been created successfully.`, {
+                title: "Post created",
+                // autoHideDelay: 3000,
+                appendToast: false,
+                variant: "success",
+                solid: true,
+              });
             }
           })
           .catch((err) => {
@@ -71,7 +79,7 @@ export default {
             console.log(err);
           });
       } else {
-        fetch(`http://localhost:3000/api/posts/`, {
+        fetch(`${process.env.VUE_APP_API_URL}/api/posts/`, {
           method: "POST",
           body: JSON.stringify({
             post: { title: this.title, content: this.content },

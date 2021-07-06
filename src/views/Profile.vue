@@ -140,7 +140,7 @@ export default {
   },
   mounted() {
     const bearer = "Bearer " + localStorage.getItem("token");
-    fetch("http://localhost:3000/api/users/update-profile", {
+    fetch(`${process.env.VUE_APP_API_URL}/api/users/update-profile`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -166,7 +166,7 @@ export default {
     onSubmitDelete(event) {
       event.preventDefault();
       const bearer = "Bearer " + localStorage.getItem("token");
-      fetch("http://localhost:3000/api/users/delete-profile", {
+      fetch(`${process.env.VUE_APP_API_URL}/api/users/delete-profile`, {
         method: "DELETE",
 
         headers: {
@@ -188,7 +188,7 @@ export default {
     onSubmit(event) {
       event.preventDefault();
       const bearer = "Bearer " + localStorage.getItem("token");
-      fetch("http://localhost:3000/api/users/update-profile", {
+      fetch(`${process.env.VUE_APP_API_URL}/api/users/update-profile`, {
         method: "PUT",
         body: JSON.stringify(this.formProfile),
         headers: {
@@ -209,7 +209,7 @@ export default {
     onSubmitChangePassword(event) {
       event.preventDefault();
       const bearer = "Bearer " + localStorage.getItem("token");
-      fetch("http://localhost:3000/api/users/change-password", {
+      fetch(`${process.env.VUE_APP_API_URL}/api/users/change-password`, {
         method: "PUT",
         body: JSON.stringify(this.formPassword),
         headers: {

@@ -1,6 +1,8 @@
 import Vue from "vue";
 import App from "./App.vue";
 
+import moment from "moment";
+
 import { BootstrapVue, IconsPlugin } from "bootstrap-vue";
 
 import "bootstrap/dist/css/bootstrap.css";
@@ -14,6 +16,12 @@ Vue.use(BootstrapVue);
 // Optionally install the BootstrapVue icon components plugin
 Vue.use(IconsPlugin);
 Vue.config.productionTip = false;
+
+Vue.filter("formatDate", function (value, format) {
+  if (value) {
+    return moment(String(value)).format(format);
+  }
+});
 
 new Vue({
   router,

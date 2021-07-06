@@ -12,6 +12,8 @@
     "bootstrap-icons": "^1.5.0",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
+    "dotenv": "^8.6.0",
+    "moment": "^2.29.1",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",
     "vuex": "^3.4.0"

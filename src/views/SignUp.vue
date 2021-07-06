@@ -68,7 +68,7 @@ export default {
   methods: {
     onSubmit(event) {
       event.preventDefault();
-      fetch("http://localhost:3000/api/users/signup", {
+      fetch(`${process.env.VUE_APP_API_URL}/api/users/signup`, {
         method: "POST",
         body: JSON.stringify(this.form),
         headers: {

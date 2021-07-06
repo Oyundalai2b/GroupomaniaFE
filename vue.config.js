@@ -1,5 +1,7 @@
+process.env.VUE_APP_API_URL = process.env.API_URL;
+
 module.exports = {
   devServer: {
-    proxy: "http://localhost:3000",
+    port: process.env.PORT || 8080,
   },
 };

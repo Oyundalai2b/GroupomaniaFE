@@ -2,7 +2,7 @@
   <div class="postList">
     <div class="container posts">
       <div
-        class="row singlePost"
+        class="row singlePost mt-4"
         v-bind:class="classObject(post)"
         :key="index"
         v-for="(post, index) in displayPosts"
@@ -13,10 +13,11 @@
           <h4>{{ post.title }}</h4>
           <p>{{ post.content }}</p>
           <div class="footer-of-post">
-            <div>
-              Posted by:<strong> {{ post.user.name }}</strong>
+            <div class="col-md-6 col-12">
+              Posted by:<strong> {{ post.user.name }}</strong> at
+              {{ post.createdAt | formatDate("DD/MM/YYYY hh:mm a") }}
             </div>
-            <div class="links">
+            <div class="links col-md-6 col-12">
               <router-link :to="{ name: 'Post', params: { id: post.id } }"
                 >View post
               </router-link>
@@ -67,7 +68,7 @@ export default {
   },
   mounted() {
     const bearer = "Bearer " + localStorage.getItem("token");
-    fetch("http://localhost:3000/api/posts", {
+    fetch(`${process.env.VUE_APP_API_URL}/api/posts`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -152,7 +153,6 @@ export default {
           border-top: solid #f8f9fa;
           display: flex;
           justify-content: space-between;
-          padding: 0 5px;
           margin-top: auto;
         }
       }

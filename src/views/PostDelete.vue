@@ -51,7 +51,7 @@ export default {
       const bearer = "Bearer " + localStorage.getItem("token");
       let postId = this.$router.currentRoute.params.id;
 
-      fetch(`http://localhost:3000/api/posts/${postId}`, {
+      fetch(`${process.env.VUE_APP_API_URL}/api/posts/${postId}`, {
         method: "DELETE",
         headers: {
           Authorization: bearer,
@@ -73,7 +73,7 @@ export default {
   mounted() {
     let postId = this.$router.currentRoute.params.id;
     const bearer = "Bearer " + localStorage.getItem("token");
-    fetch(`http://localhost:3000/api/posts/${postId}`, {
+    fetch(`${process.env.VUE_APP_API_URL}/api/posts/${postId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
