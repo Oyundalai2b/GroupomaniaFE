@@ -22,8 +22,8 @@
 </template>
 
 <script>
-import image from "../../public/images/icon-left-font.png";
-import image2 from "../../public/images/icon110x110.png";
+import image from "../../public/images/mobile-icon-above-font-removebg-preview.png";
+// import image2 from "../../public/images/icon110x110.png";
 
 export default {
   name: "NavBar",
@@ -31,7 +31,7 @@ export default {
     return {
       images: {
         image: image,
-        image2: image2,
+        // image2: image2,
       },
     };
   },
@@ -42,10 +42,9 @@ export default {
 #nav {
   background-color: #d9d9ea;
   img {
-    max-width: 100%;
+    width: 250px;
     height: auto;
   }
-
   a.router-link-exact-active {
     color: #fc3006 !important;
   }

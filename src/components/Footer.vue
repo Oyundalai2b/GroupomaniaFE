@@ -1,8 +1,12 @@
 <template>
   <div class="footer">
     <div class="contacts">
-      <b-icon icon="facebook" font-scale="1.5"></b-icon> |
-      <b-icon icon="instagram" font-scale="1.5"></b-icon>
+      <a href="https://www.facebook.com" target="_blank"
+        ><b-icon icon="facebook" font-scale="1.5"></b-icon> |
+      </a>
+      <a href="https://www.instagram.com" target="_blank"
+        ><b-icon icon="instagram" font-scale="1.5"></b-icon>
+      </a>
       <br />
       <span>&copy; 2021 CONNECT-E</span>
     </div>

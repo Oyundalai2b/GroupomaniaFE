@@ -153,10 +153,19 @@ export default {
           display: flex;
           justify-content: space-between;
           padding: 0 5px;
+          margin-top: auto;
         }
+      }
+      img.col-md-4 {
+        // height: 200px;
+      }
+      img.col-12 {
+        // height: 300px;
       }
       .col-md-8,
       .postContext {
+        display: flex;
+        flex-direction: column;
         background-color: #ececec;
         width: 100%;
         padding: 0 !important;
@@ -175,6 +184,7 @@ export default {
         .footer-of-post {
           border-top: solid #f8f9fa;
           display: flex;
+          margin-top: auto;
         }
       }
       .unread {
