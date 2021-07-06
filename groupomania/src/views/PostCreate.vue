@@ -16,9 +16,11 @@
       </b-form-textarea>
 
       <b-form-file
+        class="text-left"
+        id="browse-image"
         v-model="file1"
         :state="Boolean(file1)"
-        placeholder=""
+        placeholder="Drop file here..."
         drop-placeholder="Drop file here..."
       ></b-form-file>
 
@@ -97,15 +99,13 @@ export default {
 <style lang="scss">
 #new-post {
   height: auto;
-  width: 60%;
+  width: 80%;
   margin: 0 auto;
   padding: 20px;
   form {
     #textarea {
       margin-top: 20px;
-    }
-    div.custom-file {
-      margin: 10px;
+      margin-bottom: 20px;
     }
     button {
       margin-top: 20px;

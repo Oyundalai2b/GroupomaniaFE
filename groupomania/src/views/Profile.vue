@@ -2,117 +2,119 @@
   <div id="profile">
     <b-container>
       <b-row class="justify-content-md-center mt-4 mb-4">
-        <b-col col md="8">
-          <b-card
-            header="YOUR PROFILE"
-            header-bg-variant="primary"
-            header-text-variant="white"
-          >
-            <b-form @submit="onSubmit">
-              <b-form-group
-                class="mt-2"
-                id="input-group-1"
-                label="Change user name:"
-                label-for="input-1"
-              >
-                <b-form-input
-                  id="name"
-                  type="text"
-                  placeholder="Enter new user name"
-                  v-model="formProfile.name"
-                ></b-form-input>
-              </b-form-group>
-              <label> Edit biography: </label>
-              <b-form-textarea
-                id="bio"
-                label="edit bio:"
-                v-model="formProfile.bio"
-                placeholder="Tell about yourself here"
-                rows="5"
-                max-rows="10"
-              >
-              </b-form-textarea>
+        <b-card
+          class="col-md-6"
+          header="YOUR PROFILE"
+          header-bg-variant="primary"
+          header-text-variant="white"
+        >
+          <b-form @submit="onSubmit">
+            <b-form-group
+              class="mt-2"
+              id="input-group-1"
+              label="Change user name:"
+              label-for="input-1"
+            >
+              <b-form-input
+                id="name"
+                type="text"
+                placeholder="Enter new user name"
+                v-model="formProfile.name"
+              ></b-form-input>
+            </b-form-group>
+            <label> Edit biography: </label>
+            <b-form-textarea
+              id="bio"
+              label="edit bio:"
+              v-model="formProfile.bio"
+              placeholder="Tell about yourself here"
+              rows="5"
+              max-rows="10"
+            >
+            </b-form-textarea>
 
-              <b-button class="signup mt-2" type="submit" variant="primary"
-                >Update profile</b-button
-              >
-            </b-form>
-          </b-card>
-          <b-card
-            header="CHANGE PASSWORD"
-            header-bg-variant="primary"
-            header-text-variant="white"
-          >
-            <b-form @submit="onSubmitChangePassword">
-              <b-form-group
-                class="mt-2"
-                id="input-group-2"
-                label="Current Password:"
-                label-for="current-password"
-              >
-                <b-form-input
-                  id="current-password"
-                  v-model="formPassword.password"
-                  placeholder="Enter your current Password"
-                  type="password"
-                  required
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                class="mt-2"
-                id="input-group-2"
-                label="New Password:"
-                label-for="new-password"
-              >
-                <b-form-input
-                  id="new-password"
-                  v-model="formPassword.newPassword"
-                  placeholder="Enter new Password"
-                  type="password"
-                  required
-                ></b-form-input>
-              </b-form-group>
-              <b-form-group
-                class="mt-2"
-                id="input-group-2"
-                label="Confirm Password"
-                label-for="confirm-password"
-              >
-                <b-form-input
-                  id="confirm-password"
-                  v-model="formPassword.confirmPassword"
-                  placeholder="Enter new Password"
-                  type="password"
-                  required
-                ></b-form-input>
-              </b-form-group>
-
-              <b-button class="signup mt-2" type="submit" variant="primary"
-                >Change Password</b-button
-              >
-            </b-form>
-          </b-card>
-          <b-card
-            header="YOUR PROFILE"
-            header-bg-variant="primary"
-            header-text-variant="white"
-          >
-            <b-button id="show-btn" variant="danger" @click="showModal"
+            <b-button class="signup mt-2" type="submit" variant="primary"
+              >Update profile</b-button
+            >
+            <b-button
+              id="show-btn"
+              class="mt-2"
+              variant="danger"
+              @click="showModal"
               >Delete Profile</b-button
             >
-
-            <b-modal ref="my-modal" hide-footer title="Using Component Methods">
+            <b-modal
+              ref="my-modal"
+              hide-footer
+              title="Warning!"
+              class="text-center"
+            >
               <div class="d-block text-center">
-                <h3>Hello From My Modal!</h3>
+                <h4>You are deleting your profile permanently.</h4>
               </div>
               <b-form @submit="onSubmitDelete">
-                <b-button class="mt-2" type="submit" variant="danger"
+                <b-button type="submit" variant="danger"
                   >Delete profile</b-button
                 >
               </b-form>
             </b-modal>
-          </b-card>
-        </b-col>
+          </b-form>
+        </b-card>
+        <b-card
+          class="col-md-6"
+          header="CHANGE PASSWORD"
+          header-bg-variant="primary"
+          header-text-variant="white"
+        >
+          <b-form @submit="onSubmitChangePassword">
+            <b-form-group
+              class="mt-2"
+              id="input-group-2"
+              label="Current Password:"
+              label-for="current-password"
+            >
+              <b-form-input
+                id="current-password"
+                v-model="formPassword.password"
+                placeholder="Enter your current Password"
+                type="password"
+                required
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="mt-2"
+              id="input-group-2"
+              label="New Password:"
+              label-for="new-password"
+            >
+              <b-form-input
+                id="new-password"
+                v-model="formPassword.newPassword"
+                placeholder="Enter new Password"
+                type="password"
+                required
+              ></b-form-input>
+            </b-form-group>
+            <b-form-group
+              class="mt-2"
+              id="input-group-2"
+              label="Confirm Password"
+              label-for="confirm-password"
+            >
+              <b-form-input
+                id="confirm-password"
+                v-model="formPassword.confirmPassword"
+                placeholder="Enter new Password"
+                type="password"
+                required
+              ></b-form-input>
+            </b-form-group>
+
+            <b-button class="signup mt-2" type="submit" variant="primary"
+              >Change Password</b-button
+            >
+          </b-form>
+        </b-card>
       </b-row>
     </b-container>
   </div>
@@ -241,20 +243,4 @@ export default {
 };
 </script>
 
-<style lang="scss">
-#profile {
-  .row {
-    .col {
-      width: 400px;
-      margin: 0 auto;
-      margin-bottom: 20px !important;
-      div.card-body {
-        line-height: 40px;
-      }
-    }
-  }
-}
-button.signup {
-  margin-right: 20px;
-}
-</style>
+<style lang="scss"></style>

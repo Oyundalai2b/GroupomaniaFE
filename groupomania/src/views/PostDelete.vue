@@ -2,6 +2,7 @@
   <div id="post-delete">
     <b-form @submit="onSubmit">
       <b-form-input
+        id="input-title"
         v-model="title"
         placeholder="Enter post title"
       ></b-form-input>
@@ -11,10 +12,10 @@
         v-model="content"
         placeholder="Enter something..."
         rows="3"
-        max-rows="6"
+        max-rows="10"
       >
       </b-form-textarea>
-      <div>
+      <div class="delete-current-image">
         <p>Current Image</p>
         <img v-bind:src="currentImage" alt="" />
       </div>
@@ -106,11 +107,18 @@ export default {
   margin: 0 auto;
   padding: 20px;
   form {
+    #input-title {
+      font-weight: 700;
+      text-transform: uppercase;
+    }
     #textarea {
       margin-top: 20px;
     }
     div.custom-file {
-      margin: 10px;
+      margin-top: 10px;
+    }
+    .delete-current-image img {
+      width: 100%;
     }
     button {
       margin-top: 20px;

@@ -1,12 +1,12 @@
 <template>
-  <div class="post">
-    <div class="single-post" v-if="post">
-      <img id="post-img" v-bind:src="post.imgURL" />
-      <div class="post-context">
+  <div class="container post">
+    <div class="row single-post" v-if="post">
+      <img id="post-img" class="col-12 col-md-6" v-bind:src="post.imgURL" />
+      <div class="col-12 col-md-6 post-context">
         <h4>{{ post.title }}</h4>
         <!-- <p>{{ post }}</p> -->
         <p>{{ post.content }}</p>
-        <p>Created at: {{ post.createdAt }}</p>
+        <p class="posted-by">Posted by: {{ post.user.name }}</p>
       </div>
     </div>
   </div>
@@ -44,3 +44,45 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.single-post {
+  margin: 10px 0;
+  display: flex;
+  border-radius: 10px;
+  a#delete-post {
+    color: #dc3545;
+  }
+  img,
+  .col-12 {
+    object-fit: cover;
+    padding: 0 !important;
+    margin-bottom: 5px !important;
+  }
+  img,
+  .col-md-6 {
+    object-fit: cover;
+    padding: 0 !important;
+    margin-bottom: 0 !important;
+  }
+
+  .post-context {
+    background-color: #ececec;
+    width: 100%;
+    padding: 0 !important;
+    h4 {
+      text-transform: uppercase;
+      font-weight: 400;
+      border-bottom: solid #f8f9fa;
+    }
+    p {
+      text-overflow: ellipsis;
+      white-space: wrap;
+      overflow: hidden;
+    }
+    .posted-by {
+      border-top: solid #f8f9fa;
+    }
+  }
+}
+</style>

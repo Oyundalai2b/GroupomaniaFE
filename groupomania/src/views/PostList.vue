@@ -7,9 +7,9 @@
         :key="index"
         v-for="(post, index) in displayPosts"
       >
-        <img id="post-img" class="col-md-4" v-bind:src="post.imgURL" />
+        <img id="post-img" class="col-md-4 col-12" v-bind:src="post.imgURL" />
 
-        <div class="col-md-8 postContext">
+        <div class="col-md-8 col-12 postContext">
           <h4>{{ post.title }}</h4>
           <p>{{ post.content }}</p>
           <div class="footer-of-post">
@@ -78,6 +78,7 @@ export default {
         return res.json();
       })
       .then((data) => {
+        console.log(data);
         this.posts = data;
         this.displayPosts = data.slice(0, this.perPage);
         this.rows = this.posts.length;
@@ -114,76 +115,76 @@ export default {
 .toast-module-opacity {
   opacity: 1 !important;
 }
-// .postList {
-//   .posts {
-//     width: 60%;
-//     margin: 20px auto;
+.postList {
+  .posts {
+    width: 100%;
+    margin: 20px auto;
 
-//     .singlePost {
-//       display: flex;
-//       border-radius: 10px;
-//       padding: 20px 5px;
+    .singlePost {
+      display: flex;
+      border-radius: 10px;
+      a#delete-post {
+        color: #dc3545;
+      }
+      img,
+      .col-12 {
+        object-fit: cover;
+        padding: 0 !important;
+        margin-bottom: 5px;
+      }
 
-//       img {
-//         margin-right: 20px;
-//         width: 200px;
-//         height: 200px;
-//         object-fit: cover;
-//       }
-//       .postContext {
-//         position: relative;
-//         width: 100%;
-//         background-color: #ececec;
-//         text-align: center;
+      .col-12,
+      .postContext {
+        background-color: #ececec;
+        width: 100%;
+        // padding: 0 !important;
+        h4 {
+          text-transform: uppercase;
+          font-weight: 400;
+          border-bottom: solid #f8f9fa;
+        }
+        p {
+          text-overflow: ellipsis;
+          white-space: wrap;
+          overflow: hidden;
+        }
+        .footer-of-post {
+          border-top: solid #f8f9fa;
+          display: flex;
+          justify-content: space-between;
+          padding: 0 5px;
+        }
+      }
+      .col-md-8,
+      .postContext {
+        background-color: #ececec;
+        width: 100%;
+        padding: 0 !important;
 
-//         h4 {
-//           text-transform: uppercase;
-//           font-weight: 400;
-//           border-bottom: solid #f8f9fa;
-//         }
-//         p {
-//           width: 100%;
-//           text-overflow: ellipsis;
-//           white-space: wrap;
-//           overflow: hidden;
-//         }
-//         .footer-of-post {
-//           border-top: solid #f8f9fa;
-//           width: 100%;
-//           position: absolute;
-//           display: flex;
-//           justify-content: space-between;
-//           bottom: 5px;
-
-//           div {
-//             color: #2c3e50;
-//             margin-left: 5px;
-//           }
-//           .links {
-//             margin-right: 5px;
-//             a {
-//               font-size: large;
-//               text-decoration: none;
-//             }
-//             a#delete-post {
-//               color: #dc3545;
-//             }
-//           }
-//         }
-//       }
-//     }
-//     .unread {
-//       .postContext {
-//         h4 {
-//           color: #0d6efd;
-//         }
-//       }
-//     }
-//   }
-// }
-// #myListView.k-widget,
-// #catalog-items.k-widget * {
-//   -webkit-box-sizing: border-box;
-//   box-sizing: border-box;
-// }
+        h4 {
+          text-transform: uppercase;
+          font-weight: 400;
+          border-bottom: solid #f8f9fa;
+        }
+        p {
+          text-overflow: ellipsis;
+          white-space: wrap;
+          overflow: hidden;
+          height: auto;
+        }
+        .footer-of-post {
+          border-top: solid #f8f9fa;
+          display: flex;
+        }
+      }
+      .unread {
+        .postContext {
+          h4 {
+            color: #dc3545;
+          }
+        }
+      }
+    }
+  }
+}
 </style>
