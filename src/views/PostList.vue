@@ -124,6 +124,7 @@ export default {
     .singlePost {
       display: flex;
       border-radius: 10px;
+
       a#delete-post {
         color: #dc3545;
       }
@@ -136,25 +137,30 @@ export default {
 
       .col-12,
       .postContext {
-        background-color: #ececec;
-        width: 100%;
-        // padding: 0 !important;
-        h4 {
-          text-transform: uppercase;
-          font-weight: 400;
-          border-bottom: solid #f8f9fa;
-        }
-        p {
-          text-overflow: ellipsis;
-          white-space: wrap;
-          overflow: hidden;
-        }
-        .footer-of-post {
-          border-top: solid #f8f9fa;
-          display: flex;
-          justify-content: space-between;
-          margin-top: auto;
-        }
+      }
+      background-color: #ececec;
+      width: 100%;
+      // padding: 0 !important;
+      h4 {
+        text-transform: uppercase;
+        font-weight: 400;
+        border-bottom: solid #f8f9fa;
+      }
+      p {
+        text-overflow: ellipsis;
+        white-space: wrap;
+        overflow: hidden;
+      }
+      .footer-of-post {
+        border-top: solid #f8f9fa;
+        display: flex;
+        justify-content: space-between;
+        margin-top: auto;
+      }
+    }
+    .unread {
+      h4 {
+        color: #dc3545;
       }
       img.col-md-4 {
         // height: 200px;
@@ -185,13 +191,6 @@ export default {
           border-top: solid #f8f9fa;
           display: flex;
           margin-top: auto;
-        }
-      }
-      .unread {
-        .postContext {
-          h4 {
-            color: #dc3545;
-          }
         }
       }
     }
