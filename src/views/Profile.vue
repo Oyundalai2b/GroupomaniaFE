@@ -46,16 +46,14 @@
               <b-modal
                 ref="my-modal"
                 hide-footer
-                title="Warning!"
+                title="Danger zone!"
                 class="text-center"
               >
-                <div class="d-block text-center">
-                  <h4>You are deleting your profile permanently.</h4>
+                <div class="d-block pb-4">
+                  Are you sure you want to delete your account?
                 </div>
                 <b-form @submit="onSubmitDelete">
-                  <b-button type="submit" variant="danger"
-                    >Delete profile</b-button
-                  >
+                  <b-button type="submit" variant="danger">Confirm</b-button>
                 </b-form>
               </b-modal>
             </b-form>
@@ -123,6 +121,7 @@
 </template>
 
 <script>
+import router from "../router";
 export default {
   name: "Profile",
   data() {
@@ -177,7 +176,12 @@ export default {
         .then((res) => {
           if (res.status == 200) {
             localStorage.clear();
-            console.log("User deleted successfully!");
+            this.$root.$bvToast.toast("Your account has been deleted!", {
+              title: "Account deleted",
+              variant: "success",
+              solid: true,
+            });
+            router.push({ name: "Home" });
           }
         })
         .catch((err) => {
@@ -198,7 +202,11 @@ export default {
       })
         .then((res) => {
           if (res.status == 200) {
-            console.log("User updated successfully!");
+            this.$bvToast.toast("Your profile has been updated!", {
+              title: "Profile updated",
+              variant: "success",
+              solid: true,
+            });
           }
         })
         .catch((err) => {
@@ -219,7 +227,19 @@ export default {
       })
         .then((res) => {
           if (res.status == 200) {
-            console.log("Password updated successfully!");
+            this.$bvToast.toast("Your password updated successfully!", {
+              title: "Password updated",
+              variant: "success",
+              solid: true,
+            });
+          } else {
+            res.json().then((data) => {
+              this.$bvToast.toast(data.message, {
+                title: "Password error",
+                variant: "danger",
+                solid: true,
+              });
+            });
           }
         })
         .catch((err) => {

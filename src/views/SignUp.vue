@@ -51,6 +51,24 @@
         </b-col>
       </b-row>
     </b-container>
+    <b-toast id="my-toast" variant="success" solid>
+      <template #toast-title>
+        <div class="d-flex flex-grow-1 align-items-baseline">
+          <strong class="mr-auto">Profile created!</strong>
+        </div>
+      </template>
+      Your profile has been created successfully.
+      <br />Please click <a href="/login">here</a> to login and update your
+      profile.
+    </b-toast>
+    <b-toast id="error-toast" variant="danger" solid>
+      <template #toast-title>
+        <div class="d-flex flex-grow-1 align-items-baseline">
+          <strong class="mr-auto">Error!</strong>
+        </div>
+      </template>
+      Email has already been used!
+    </b-toast>
   </div>
 </template>
 
@@ -65,6 +83,7 @@ export default {
       },
     };
   },
+  mounted() {},
   methods: {
     onSubmit(event) {
       event.preventDefault();
@@ -77,21 +96,16 @@ export default {
       })
         .then((res) => {
           if (res.status == 201) {
-            this.$bvToast.toast(
-              `Your profile has been created successfully. Please click here to login`,
-              {
-                title: "Profile created",
-                // autoHideDelay: 5000,
-                appendToast: false,
-                variant: "success",
-                solid: true,
-              }
-            );
-            console.log("User added successfully!");
+            this.$bvToast.show("my-toast");
+
+            this.form.email = "";
+            this.form.password = "";
+          } else {
+            this.$bvToast.show("error-toast");
           }
         })
         .catch((err) => {
-          console.log("Error occured!");
+          // this.$bvToast.show("error-toast");
           console.log(err);
         });
     },

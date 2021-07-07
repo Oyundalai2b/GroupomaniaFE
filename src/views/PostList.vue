@@ -10,14 +10,18 @@
         <img id="post-img" class="col-md-4 col-12" v-bind:src="post.imgURL" />
 
         <div class="col-md-8 col-12 postContext">
-          <h4>{{ post.title }}</h4>
+          <h4>
+            <router-link :to="{ name: 'Post', params: { id: post.id } }"
+              >{{ post.title }}
+            </router-link>
+          </h4>
           <p>{{ post.content }}</p>
-          <div class="footer-of-post">
-            <div class="col-md-6 col-12">
-              Posted by:<strong> {{ post.user.name }}</strong> at
-              {{ post.createdAt | formatDate("DD/MM/YYYY hh:mm a") }}
+          <div class="footer-of-post row">
+            <div class="mr-auto col-md-6 col-12">
+              Posted by:<strong> {{ post.user.name }}</strong> on
+              {{ post.createdAt | formatDate("DD/MM/YYYY") }}
             </div>
-            <div class="links col-md-6 col-12">
+            <div class="links col-md-6 col-12 ml-auto">
               <router-link :to="{ name: 'Post', params: { id: post.id } }"
                 >View post
               </router-link>
@@ -79,11 +83,9 @@ export default {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         this.posts = data;
         this.displayPosts = data.slice(0, this.perPage);
         this.rows = this.posts.length;
-        console.log(data[0].user);
       })
       .catch((err) => {
         console.log("Error occured!");
@@ -120,77 +122,74 @@ export default {
   .posts {
     width: 100%;
     margin: 20px auto;
+
     .unread {
       h4 {
         color: #dc3545;
-      }
-      .singlePost {
-        display: flex;
-        border-radius: 10px;
-
-        a#delete-post {
-          color: #dc3545;
-        }
-        img,
-        .col-12 {
-          object-fit: cover;
-          padding: 0 !important;
-          margin-bottom: 5px;
-        }
-
-        .col-12,
-        .postContext {
-        }
-        background-color: #ececec;
-        width: 100%;
-        // padding: 0 !important;
-        h4 {
-          text-transform: uppercase;
-          font-weight: 400;
-          border-bottom: solid #f8f9fa;
-        }
-        p {
-          text-overflow: ellipsis;
-          white-space: wrap;
-          overflow: hidden;
-        }
-        .footer-of-post {
-          border-top: solid #f8f9fa;
-          display: flex;
-          justify-content: space-between;
-          margin-top: auto;
+        a {
+          color: #dc3545 !important;
         }
       }
-      img.col-md-4 {
-        // height: 200px;
+    }
+    .singlePost {
+      a#delete-post {
+        color: #dc3545;
       }
-      img.col-12 {
-        // height: 300px;
-      }
-      .col-md-8,
-      .postContext {
-        display: flex;
-        flex-direction: column;
-        background-color: #ececec;
-        width: 100%;
+      img,
+      .col-12 {
+        object-fit: cover;
         padding: 0 !important;
+      }
 
-        h4 {
-          text-transform: uppercase;
-          font-weight: 400;
-          border-bottom: solid #f8f9fa;
+      .col-12,
+      .postContext {
+      }
+      background-color: #ececec;
+      width: 100%;
+
+      h4 {
+        text-transform: uppercase;
+        font-weight: 400;
+        border-bottom: solid #f8f9fa;
+        a {
+          text-decoration: none;
+          color: #2c3e50;
         }
-        p {
-          text-overflow: ellipsis;
-          white-space: wrap;
-          overflow: hidden;
-          height: auto;
-        }
-        .footer-of-post {
-          border-top: solid #f8f9fa;
-          display: flex;
-          margin-top: auto;
-        }
+      }
+      p {
+        padding: 0 10px;
+        text-align: justify;
+        text-overflow: ellipsis;
+        white-space: wrap;
+        overflow: hidden;
+        border-bottom: solid #f8f9fa;
+        margin-bottom: 0 !important;
+      }
+      .footer-of-post {
+        padding: 0 10px;
+      }
+    }
+
+    .col-md-8,
+    .postContext {
+      display: flex;
+      flex-direction: column;
+      background-color: #ececec;
+      width: 100%;
+      padding: 0 !important;
+
+      h4 {
+        text-transform: uppercase;
+        font-weight: 400;
+        border-bottom: solid #f8f9fa;
+      }
+      p {
+        text-overflow: ellipsis;
+        white-space: wrap;
+        overflow: hidden;
+      }
+      .footer-of-post {
+        // border-top: solid #f8f9fa;
       }
     }
   }

@@ -6,13 +6,19 @@
         <h4>{{ post.title }}</h4>
         <!-- <p>{{ post }}</p> -->
         <p>{{ post.content }}</p>
-        <p class="posted-by">Posted by: {{ post.user.name }}</p>
+        <p class="posted-by">
+          Posted by:<strong> {{ post.user.name }}</strong> on
+          {{ post.createdAt | formatDate("DD/MM/YYYY") }}
+        </p>
+
+        <b-link href="#" @click="goBack">Back</b-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import router from "../router";
 export default {
   name: "Post",
   data() {
@@ -20,7 +26,11 @@ export default {
       post: null,
     };
   },
-
+  methods: {
+    goBack() {
+      router.go(-1);
+    },
+  },
   mounted() {
     let postId = this.$router.currentRoute.params.id;
     const bearer = "Bearer " + localStorage.getItem("token");

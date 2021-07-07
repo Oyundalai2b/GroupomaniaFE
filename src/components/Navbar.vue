@@ -1,20 +1,27 @@
 <template>
   <div id="nav">
     <b-navbar toggleable="lg" type="dark">
-      <b-navbar-brand href="#">
+      <b-navbar-brand href="/">
         <img :src="images.image" />
       </b-navbar-brand>
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
       <b-collapse id="nav-collapse" is-nav>
-        <!-- Right aligned nav items -->
         <b-navbar-nav>
-          <router-link to="/">Home</router-link>
-          <router-link to="/signup">Sign Up</router-link>
-          <router-link to="/login">Login</router-link>
-          <router-link to="/profile">Profile</router-link>
-          <router-link to="/posts">Post List</router-link>
-          <router-link to="/posts/create">New post</router-link>
-          <router-link to="/signout">Sign Out</router-link>
+          <router-link @click.native="collapse" to="/">Home</router-link>
+          <router-link @click.native="collapse" to="/signup"
+            >Sign Up</router-link
+          >
+          <router-link @click.native="collapse" to="/login">Login</router-link>
+          <router-link @click.native="collapse" to="/profile"
+            >Profile</router-link
+          >
+          <router-link @click.native="collapse" to="/posts"
+            >Post List</router-link
+          >
+          <router-link @click.native="collapse" to="/posts/create"
+            >New post</router-link
+          >
+          <router-link @click="collapse" to="/signout">Sign Out</router-link>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
@@ -34,6 +41,11 @@ export default {
         // image2: image2,
       },
     };
+  },
+  methods: {
+    collapse() {
+      this.$root.$emit("bv::toggle::collapse", "nav-collapse");
+    },
   },
 };
 </script>

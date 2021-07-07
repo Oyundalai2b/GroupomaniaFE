@@ -92,8 +92,6 @@ export default {
           localStorage.setItem("userId", data.userId);
           localStorage.setItem("token", data.token);
           router.push({ name: "PostList" });
-          console.log("you logged in successfully");
-          console.log(data);
         })
         .catch((err) => {
           this.error = true;
