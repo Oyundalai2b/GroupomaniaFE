@@ -1,8 +1,14 @@
-# groupomania
+# GROUPOMANIA FRONTEND #
 
 ## Project setup
 ```
 npm install
+```
+
+Create `.env` file in root folder and create following environment variables:
+```
+PORT=8000
+API_URL=YOUR_API_URL
 ```
 
 ### Compiles and hot-reloads for development
