@@ -19,7 +19,7 @@
         class="text-left"
         id="browse-image"
         v-model="file1"
-        :state="Boolean(file1)"
+        :state="null"
         placeholder="Drop file here..."
         drop-placeholder="Drop file here..."
       ></b-form-file>
@@ -64,8 +64,6 @@ export default {
         })
           .then((res) => {
             if (res.status == 201) {
-              console.log("User added successfully!");
-
               this.$root.$bvToast.toast(
                 `Your post has been created successfully.`,
                 {
@@ -96,7 +94,17 @@ export default {
         })
           .then((res) => {
             if (res.status == 201) {
-              console.log("User added successfully!");
+              this.$root.$bvToast.toast(
+                `Your post has been created successfully.`,
+                {
+                  title: "Post created",
+                  // autoHideDelay: 3000,
+                  appendToast: false,
+                  variant: "success",
+                  solid: true,
+                }
+              );
+              router.push({ name: "PostList" });
             }
           })
           .catch((err) => {

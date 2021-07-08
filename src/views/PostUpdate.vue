@@ -65,8 +65,18 @@ export default {
           },
         })
           .then((res) => {
-            if (res.status == 201) {
-              console.log("User added successfully!");
+            if (res.status == 200) {
+              this.$root.$bvToast.toast(
+                `Your post has been updated successfully.`,
+                {
+                  title: "Post updated",
+                  // autoHideDelay: 3000,
+                  appendToast: false,
+                  variant: "success",
+                  solid: true,
+                }
+              );
+              router.push({ name: "PostList" });
             }
           })
           .catch((err) => {
