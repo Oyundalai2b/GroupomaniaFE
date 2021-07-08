@@ -31,6 +31,7 @@
 </template>
 
 <script>
+import router from "../router";
 export default {
   name: "PostCreate",
   data() {
@@ -65,13 +66,17 @@ export default {
             if (res.status == 201) {
               console.log("User added successfully!");
 
-              this.$bvToast.toast(`Your post has been created successfully.`, {
-                title: "Post created",
-                // autoHideDelay: 3000,
-                appendToast: false,
-                variant: "success",
-                solid: true,
-              });
+              this.$root.$bvToast.toast(
+                `Your post has been created successfully.`,
+                {
+                  title: "Post created",
+                  // autoHideDelay: 3000,
+                  appendToast: false,
+                  variant: "success",
+                  solid: true,
+                }
+              );
+              router.push({ name: "PostList" });
             }
           })
           .catch((err) => {

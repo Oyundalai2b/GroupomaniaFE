@@ -1,32 +1,17 @@
 <template>
   <div id="post-delete">
     <b-form @submit="onSubmit">
-      <b-form-input
-        id="input-title"
-        v-model="title"
-        placeholder="Enter post title"
-      ></b-form-input>
+      <h4>
+        {{ title }}
+      </h4>
 
-      <b-form-textarea
-        id="textarea"
-        v-model="content"
-        placeholder="Enter something..."
-        rows="3"
-        max-rows="10"
-      >
-      </b-form-textarea>
+      <p>
+        {{ content }}
+      </p>
       <div class="delete-current-image">
-        <p>Current Image</p>
         <img v-bind:src="currentImage" alt="" />
       </div>
-      <b-form-file
-        v-model="file1"
-        :state="Boolean(file1)"
-        placeholder="Choose a file or drop it here..."
-        drop-placeholder="Drop file here..."
-      ></b-form-file>
 
-      <!-- Plain mode -->
       <b-button class="mr-2" type="submit" variant="danger">Delete</b-button>
     </b-form>
   </div>
@@ -60,7 +45,13 @@ export default {
       })
         .then((res) => {
           if (res.status == 200) {
-            console.log("User added successfully!");
+            this.$root.$bvToast.toast(`Your post has been deleted!`, {
+              title: "Post deleted",
+              // autoHideDelay: 3000,
+              appendToast: false,
+              variant: "success",
+              solid: true,
+            });
             router.push({ name: "PostList" });
           }
         })
@@ -107,11 +98,11 @@ export default {
   margin: 0 auto;
   padding: 20px;
   form {
-    #input-title {
+    h4 {
       font-weight: 700;
       text-transform: uppercase;
     }
-    #textarea {
+    p {
       margin-top: 20px;
     }
     div.custom-file {
